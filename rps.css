@@ -131,14 +131,16 @@ button:active {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        position: fixed;
+        top: 110px;
+        
 
     }
 
     .boxes {
         grid-template-rows: 200px 200px;
         grid-template-columns: 200px;
-        position: relative;
-        top: 20px;
+       
 
     }
 
@@ -152,15 +154,13 @@ button:active {
         width: 200px;
         min-height: 50px;
         font-size: 22px;
-        position: relative;
-        top: 20px;
+        
     }
 
     .resultstatement {
         width: 330px;
         height: 50px;
-        position: relative;
-        top: 20px;
+        
     }
 
     .scorecard {
@@ -182,8 +182,5 @@ button:active {
         font-size: 18px;
     }
 
-    .main {
-        position: absolute;
-        top: 110px;
-    }
+    
 }
