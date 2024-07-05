@@ -24,69 +24,26 @@ function resetImages() {
     currentIndex = 0;
 }
 
-// Handle mouse wheel events for desktops
-const onWheel = (event) => {
-    if (event.deltaY > 0) {
-        // Scroll down
-        if (currentIndex < images.length - 1) {
-            currentIndex++;
-        }
-    } else {
-        // Scroll up
-        if (currentIndex > 0) {
-            currentIndex--;
-        }
-    }
+// Function to change the image on click
+const onClickImage = () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    console.log("Hey i am updated")
     updateImage();
-};
-
-// Variables to handle touch events
-let startY;
-
-const onTouchStart = (event) => {
-    startY = event.touches[0].clientY;
-};
-
-const onTouchMove = (event) => {
-    const touchY = event.touches[0].clientY;
-    const deltaY = startY - touchY;
-
-    if (deltaY > 0) {
-        // Scroll down
-        if (currentIndex < images.length - 1) {
-            currentIndex++;
-        }
-    } else {
-        // Scroll up
-        if (currentIndex > 0) {
-            currentIndex--;
-        }
-    }
-
-    updateImage();
-    startY = touchY; // Update start position for next touch move
 };
 
 start.addEventListener('click', () => {
-    container.addEventListener('wheel', onWheel);
-
-    // Add touch event listeners for mobile
-    container.addEventListener('touchstart', onTouchStart);
-    container.addEventListener('touchmove', onTouchMove);
+    displayedImage.addEventListener('click', onClickImage);
 
     console.log("Game started");
     start.style.display = 'none';
     select.style.display = 'block';
+    displayedImage.addEventListener('click', onClickImage);
+
     resetImages();
 });
 
 select.addEventListener('click', () => {
-    container.removeEventListener('wheel', onWheel);
-
-    // Remove touch event listeners
-    container.removeEventListener('touchstart', onTouchStart);
-    container.removeEventListener('touchmove', onTouchMove);
-
+    displayedImage.removeEventListener('click', onClickImage);
     select.disabled = true;
 
     // Shuffle images for the computer choice
