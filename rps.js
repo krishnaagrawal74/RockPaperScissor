@@ -24,14 +24,55 @@ function resetImages() {
     currentIndex = 0;
 }
 
-// Function to change the image on click
-const onClickImage = () => {
-    currentIndex = (currentIndex + 1) % images.length;
+// Handle mouse wheel events for desktops
+const onWheel = (event) => {
+    if (event.deltaY > 0) {
+        // Scroll down
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+        }
+    } else {
+        // Scroll up
+        if (currentIndex > 0) {
+            currentIndex--;
+        }
+    }
     updateImage();
 };
 
+// Variables to handle touch events
+let startY;
+
+const onTouchStart = (event) => {
+    startY = event.touches[0].clientY;
+};
+
+const onTouchMove = (event) => {
+    const touchY = event.touches[0].clientY;
+    const deltaY = startY - touchY;
+
+    if (deltaY > 0) {
+        // Scroll down
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+        }
+    } else {
+        // Scroll up
+        if (currentIndex > 0) {
+            currentIndex--;
+        }
+    }
+
+    updateImage();
+    startY = touchY; // Update start position for next touch move
+};
+
 start.addEventListener('click', () => {
-    displayedImage.addEventListener('click', onClickImage);
+    container.addEventListener('wheel', onWheel);
+
+    // Add touch event listeners for mobile
+    container.addEventListener('touchstart', onTouchStart);
+    container.addEventListener('touchmove', onTouchMove);
 
     console.log("Game started");
     start.style.display = 'none';
@@ -40,7 +81,12 @@ start.addEventListener('click', () => {
 });
 
 select.addEventListener('click', () => {
-    displayedImage.removeEventListener('click', onClickImage);
+    container.removeEventListener('wheel', onWheel);
+
+    // Remove touch event listeners
+    container.removeEventListener('touchstart', onTouchStart);
+    container.removeEventListener('touchmove', onTouchMove);
+
     select.disabled = true;
 
     // Shuffle images for the computer choice
