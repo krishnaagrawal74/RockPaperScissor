@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor</title>
+    <link rel="stylesheet" href="rps.css">
+</head>
+
+<body>
+
+    <div class="scorecard">
+        <div class="score computerscore">Computer Score: 0 </div>
+        <div class="score userscore">User Score: 0 </div>
+    </div>
+    <div class="main">
+        <div class="boxes">
+            <div class="box computer">
+                <div class="text">Computer</div>
+                <img id="computerimg" src="rock.png" alt="">
+            </div>
+            <div class="box user">
+                <div class="text">User</div>
+                <div class="image-container">
+                    <img id="displayed-image" src="rock.png" alt="Image" class="image">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="btns">
+            <button class="start">Start</button>
+            <button class="select">Select</button>
+            <button class="anothergame">Another round?</button>
+
+            <div class="resultstatement">Result</div>
+        </div>
+    </div>
+    <script src="rps.js"></script>
+</body>
+
+</html>

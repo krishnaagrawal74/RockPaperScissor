@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+:root {
+    --col1: #0C1844;
+    --col2: #E0A75E;
+    --col3: #CACACA;
+
+}
+
+body {
+    background-color: var(--col2);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.boxes {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-template-rows: 300px;
+    place-items: center;
+
+}
+
+.text {
+    background-color: var(--col2);
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 7px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    border: 4px solid var(--col1);
+}
+
+
+.anothergame {
+    display: none;
+}
+
+.start {
+    display: block;
+}
+
+.select {
+    display: none;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    border: 2px solid white;
+    background-color: var(--col1);
+    width: 150px;
+    min-height: 40px;
+    font-size: 20px;
+    margin: 4px;
+    font-weight: 500;
+    color: white;
+    border-radius: 12px;
+
+}
+
+.resultstatement {
+    background-color: var(--col1);
+    color: white;
+    font-size: 18px;
+    width: 300px;
+    height: 40px;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    display: none;
+    border-radius: 12px;
+}
+
+button:active {
+    background-color: blueviolet;
+    border-width: 4px;
+}
+
+.scorecard {
+    background-color: rgb(22, 14, 22);
+    height: 100px;
+    width: 100vw;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 0;
+
+}
+
+.score {
+    padding: 12px;
+    margin: 50px;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 400px) {
+
+    body {
+        flex-direction: row;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .boxes {
+        grid-template-rows: 200px 200px;
+        grid-template-columns: 200px;
+        position: relative;
+        top: 20px;
+
+    }
+
+    img {
+        width: 150px;
+        height: 150px;
+
+    }
+
+    button {
+        width: 200px;
+        min-height: 50px;
+        font-size: 22px;
+        position: relative;
+        top: 20px;
+    }
+
+    .resultstatement {
+        width: 330px;
+        height: 50px;
+        position: relative;
+        top: 20px;
+    }
+
+    .scorecard {
+
+        height: 100px;
+
+        color: white;
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        
+
+    }
+
+    .score {
+        padding: 12px;
+        margin: 20px;
+        font-size: 18px;
+    }
+
+    .main {
+        position: absolute;
+        top: 110px;
+    }
+}
